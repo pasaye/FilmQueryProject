@@ -149,8 +149,8 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film [title=" + title + ", description=" + description + ", releaseYear=" + releaseYear + ", language="
-				+ language + ", rating=" + rating + "Actors:"+ getCast()+"]";
+		return "Your film is: " + title + "\n which is about: " + description + "\n and was released in: " + releaseYear + " \nfilmed in: "
+				+ language + " is rated: " + rating + "\n Actors:"+ getCast()+"]";
 	}
 
 	@Override
