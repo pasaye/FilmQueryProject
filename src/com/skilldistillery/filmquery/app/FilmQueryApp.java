@@ -9,35 +9,59 @@ import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Film;
 
 public class FilmQueryApp {
-  
- private DatabaseAccessor db = new DatabaseAccessorObject();
 
-  public static void main(String[] args) {
-    FilmQueryApp app = new FilmQueryApp();
-    app.test();
-//    app.launch();
-  }
+	private DatabaseAccessor db = new DatabaseAccessorObject();
+	Scanner input = new Scanner(System.in);
+	Actor actor = new Actor();
+	Film film = new Film();
 
-  private void test() {
-	 Actor actor = db.findActorById(143);
-	 System.out.println(actor);
-	 
-	
-	  
-   Film film = db.findFilmById(200);
-   System.out.println(film);
-  }
+	public static void main(String[] args) {
+		FilmQueryApp app = new FilmQueryApp();
+		app.launch();
+	}
 
-  private void launch() {
-    Scanner input = new Scanner(System.in);
-    
-    startUserInterface(input);
-    
-    input.close();
-  }
+	private void launch() {
 
-  private void startUserInterface(Scanner input) {
-    
-  }
+		startUserInterface(input);
+
+		input.close();
+
+	}
+
+	private void startUserInterface(Scanner input) {
+		
+		System.out.println("1. Look up film by id");
+		System.out.println("2. Look up film by a keyword search");
+		System.out.println("3. exit");
+		int userChoice = input.nextInt();
+	do {	
+
+		input.next();
+
+		switch (userChoice) {
+		case 1:
+			 	if(db != null) {
+			 		
+			 	}else {
+			 		System.out.println("No such film exist");
+			 	}
+			break;
+		case 2:
+			if(db != null) {
+		 		
+		 	}else {
+		 		System.out.println("No such film exist");
+		 	}
+			break;
+		case 3:
+			System.out.println("Goodbye");
+			break;
+		default:
+			System.out.println("invalid entry");
+			break;
+		}
+	}while(userChoice != 3);
+
+	}
 
 }
