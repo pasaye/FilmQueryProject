@@ -36,14 +36,22 @@ public class FilmQueryApp {
 			userChoice = input.nextInt();
 			switch (userChoice) {
 			case 1:
-				if (db != null) {
-
+				System.out.println("Enter film id");
+				int id = input.nextInt();
+				
+				film = db.findFilmById(id);
+				if (film != null) {
+					System.out.println(film);
 				} else {
 					System.out.println("No such film exist");
 				}
 				break;
 			case 2:
-				if (db != null) {
+				System.out.println("Type in keyword");
+				String keyword = input.nextLine();
+				
+				if (keyword != null) {
+					System.out.println();
 
 				} else {
 					System.out.println("No such film exist");
