@@ -102,7 +102,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		try {
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
-			String sql = "SELECT film.id, film.title FROM film WHERE id = ?";
+			String sql = "SELECT film.* FROM film WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
@@ -121,12 +121,13 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String features = rs.getString("special_features");
 
 				film = new Film(id, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating, features);
-				film.setId(id);
+				
+				film.setCast(findActorsByFilmId(filmId));
 
 			}
 
 		} catch (SQLException e) {
-
+			System.out.println("me");
 			e.printStackTrace();
 		}
 

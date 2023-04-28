@@ -138,19 +138,19 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public List<Actor> getActors() {
+	public List<Actor> getCast() {
 		List<Actor> copy = new ArrayList<>(cast);
 		return copy;
 	}
 
-	public void setActors(List<Actor> cast) {
+	public void setCast(List<Actor> cast) {
 		this.cast = cast;
 	}
 
 	@Override
 	public String toString() {
 		return "Film [title=" + title + ", description=" + description + ", releaseYear=" + releaseYear + ", language="
-				+ language + ", rating=" + rating + "Actors:"+ getActors()+"]";
+				+ language + ", rating=" + rating + "Actors:"+ getCast()+"]";
 	}
 
 	@Override
