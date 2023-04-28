@@ -29,38 +29,41 @@ public class FilmQueryApp {
 	}
 
 	private void startUserInterface(Scanner input) {
-		
+		int userChoice = 0;
+
+		loop: while (userChoice != 3) {
+			menu();
+			userChoice = input.nextInt();
+			switch (userChoice) {
+			case 1:
+				if (db != null) {
+
+				} else {
+					System.out.println("No such film exist");
+				}
+				break;
+			case 2:
+				if (db != null) {
+
+				} else {
+					System.out.println("No such film exist");
+				}
+				break;
+			case 3:
+				System.out.println("Goodbye");
+				break loop;
+			default:
+				System.out.println("invalid entry");
+				break;
+			}
+		}
+
+	}
+
+	private void menu() {
 		System.out.println("1. Look up film by id");
 		System.out.println("2. Look up film by a keyword search");
 		System.out.println("3. exit");
-		int userChoice = input.nextInt();
-	do {	
-
-		input.next();
-
-		switch (userChoice) {
-		case 1:
-			 	if(db != null) {
-			 		
-			 	}else {
-			 		System.out.println("No such film exist");
-			 	}
-			break;
-		case 2:
-			if(db != null) {
-		 		
-		 	}else {
-		 		System.out.println("No such film exist");
-		 	}
-			break;
-		case 3:
-			System.out.println("Goodbye");
-			break;
-		default:
-			System.out.println("invalid entry");
-			break;
-		}
-	}while(userChoice != 3);
 
 	}
 
