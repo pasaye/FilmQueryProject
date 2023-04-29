@@ -12,8 +12,8 @@ public class FilmQueryApp {
 
 	private DatabaseAccessor db = new DatabaseAccessorObject();
 	Scanner input = new Scanner(System.in);
-	Actor actor = new Actor();
 	Film film = new Film();
+	List<Film> search;
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
@@ -34,10 +34,12 @@ public class FilmQueryApp {
 		loop: while (userChoice != 3) {
 			menu();
 			userChoice = input.nextInt();
+			input.nextLine();
 			switch (userChoice) {
 			case 1:
 				System.out.println("Enter film id");
 				int id = input.nextInt();
+				input.nextLine();
 				
 				film = db.findFilmById(id);
 				if (film != null) {
@@ -50,8 +52,9 @@ public class FilmQueryApp {
 				System.out.println("Type in keyword");
 				String keyword = input.nextLine();
 				
-				if (keyword != null) {
-					System.out.println();
+				search = db.searchByKeyWord(keyword);
+				if (search.size() != 0) {
+					System.out.println(search);
 
 				} else {
 					System.out.println("No such film exist");
