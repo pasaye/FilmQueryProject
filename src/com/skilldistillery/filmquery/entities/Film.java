@@ -20,6 +20,10 @@ public class Film {
 	private List<Actor> cast = new ArrayList<>();
 	
 	
+	private static final String PURPLE = "\u001B[35m";
+	private static final String RESET = "\u001B[0m";
+	
+	
 	public Film() {
 		
 	}
@@ -149,8 +153,8 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Your film is: " + title + "\n which is about: " + description + "\n and was released in: " + releaseYear + " \nfilmed in: "
-				+ language + " is rated: " + rating + "\n Actors:"+ getCast()+"]";
+		return "\nSelected film(s): " + title + "\n which is about: " + description + "\n and was released in: " + releaseYear + " \nfilmed in: " + PURPLE
+				+ language + RESET + " is rated: " + rating + "\n Actors:"+ getCast()+"]";
 	}
 
 	@Override

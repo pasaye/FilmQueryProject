@@ -15,7 +15,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 	private static final String USER = "student";
 	private static final String PASS = "student";
-
+	
+	
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -101,8 +102,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = null;
 
 		try {
+
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
-			String sql = "SELECT film.* FROM film WHERE id = ?";
+			String sql = " SELECT film.*, language.name FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
@@ -112,7 +115,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String title = rs.getString("title");
 				String desc = rs.getString("description");
 				int releaseYear = rs.getInt("release_year");
-				String langId = rs.getString("language_id");
+				String langId = rs.getString("language.name");
 				int rentDur = rs.getInt("rental_duration");
 				double rate = rs.getDouble("rental_rate");
 				double length = rs.getDouble("length");
@@ -130,7 +133,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			System.out.println("me");
 			e.printStackTrace();
 		}
 

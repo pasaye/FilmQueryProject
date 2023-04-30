@@ -14,7 +14,7 @@ public class FilmQueryApp {
 	Scanner input = new Scanner(System.in);
 	Film film = new Film();
 	List<Film> search;
-
+	
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
 		app.launch();
